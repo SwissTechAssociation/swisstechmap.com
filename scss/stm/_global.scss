@@ -1,0 +1,46 @@
+header, section, footer{
+   padding: 45px 0;
+
+   h1{
+      padding: 15px;
+   }
+   &.red{
+      background: $red;
+   }
+   &.grey{
+      background: $vapor;
+   }
+   &#map{
+      height: 80%;
+      width: 100%;
+   }
+}
+
+div#subFooter{
+   background: $oil;
+   height: 30px;
+   p{
+      color: $white;
+      padding: 5px 0;
+      margin: 0;
+      font-size: 12px;
+   }
+}
+
+
+@media #{$medium-up}{
+   header, section, footer{
+      padding: 60px 0;
+      h1{
+         padding: 30px 0 40px 0;
+      }
+   }
+
+}
+
+
+@media #{$large-up}{
+   header, section, footer{
+      padding: 120px 0;
+   }
+}
