@@ -412,27 +412,27 @@
 		$('#contactform').submit(function(){
 			var action = $(this).attr('action');
 			$('#contactform #submit').attr('disabled','disabled').after();
-			$("#message").slideUp(750,function() {
-				$('#message').hide();
-				$.post(action, {
-					email: $('#email').val(),
-					firstname: $('#firstname').val(),
-					lastname: $('#firstname').val(),
-					company: $('#company').val(),
-					message: $('#message').val(),
-				},
-				function(data){
-					document.getElementById('message').innerHTML = data;
-					$('#message').slideDown('slow');
-					$('#contactform img.loader').fadeOut('fast',function(){$(this).remove()});
-					$('#contactform #submit').removeAttr('disabled','');
-					if(data.match('success') != null) $('#contactform').slideUp('slow');
-				}
-			);
+				$("#message").slideUp(750,function() {
+					$('#message').hide();
+					$.post(action, {
+						email: $('#email').val(),
+						firstname: $('#firstname').val(),
+						lastname: $('#firstname').val(),
+						company: $('#company').val(),
+						message: $('#message').val(),
+					},
+					function(data){
+						document.getElementById('message').innerHTML = data;
+						$('#message').slideDown('slow');
+						$('#contactform img.loader').fadeOut('fast',function(){$(this).remove()});
+						$('#contactform #submit').removeAttr('disabled','');
+						if(data.match('success') != null) $('#contactform').slideUp('slow');
+					}
+				);
+			});
+			return false;
 		});
-		return false;
 	});
-});
 </script>
 <script>
 $(document).ready(function() {
