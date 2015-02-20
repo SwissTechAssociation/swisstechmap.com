@@ -13,6 +13,10 @@ header, section, footer{
    &#map{
       height: 80%;
       width: 100%;
+
+      img{
+         max-width : none;
+      }   
    }
 }
 

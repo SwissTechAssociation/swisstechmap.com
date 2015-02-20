@@ -14,20 +14,22 @@
 	<!-- Favicon -->
 	<link href="favicon.png" rel="shortcut icon" type="image/png">
 	<!-- Compiled CSS -->
-	<link rel="stylesheet" href="css/app.css">
+	<link href="css/app.css" rel='stylesheet' type='text/css'>
 	<!-- Roboto Font -->
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
 	<!-- Modernizer JS -->
-	<script src="bower_components/modernizr/modernizr.js"></script>
+	<script src="bower_components/modernizr/modernizr.js" type="text/javascript"></script>
+	<!-- Google Map JS -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv6Ru9xwvPpwhpBwRQ0Vh60gus5ni0y5A&signed_in=true&v=3.exp" type="text/javascript"></script>
 	<!-- Google Analytics JS -->
 	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	  ga('create', 'UA-44933906-3', 'auto');
-	  ga('send', 'pageview');
+	ga('create', 'UA-44933906-3', 'auto');
+	ga('send', 'pageview');
 
 	</script>
 </head>
@@ -53,35 +55,34 @@
 		<div class="row">
 			<div class="small-12 large-12 columns central-countainer text-center">
 				<div id="message" class="row collapse"></div>
-					<form method="post" action="contact_stm.php" name="contactform" id="contactform" novalidate>
-						<div class="row">
-							<div class="small-12 medium-12 large-4 columns  left">
-								<input class="radius" type="email" id="email" placeholder="Your email">
-							</div>
-							<div class="small-12 medium-6 large-4 columns radius">
-								<input class="radius" type="text" id="name" placeholder="Your name">
-							</div>
-							<div class="small-12 medium-6 large-4 columns radius">
-								<input class="radius" type="text" id="company" placeholder="Your company">
-							</div>
+				<form method="post" action="contact_stm.php" name="contactform" id="contactform" novalidate>
+					<div class="row">
+						<div class="small-12 medium-12 large-4 columns  left">
+							<input class="radius" type="email" id="email" placeholder="Your email">
 						</div>
-						<div class="row">
-							<div class="small-12 columns radius">
-								<textarea class="radius" type="message" id="message" name="message" placeholder="Tell us your story! We'll come back to you asap."></textarea>
-							</div>
-							<div class="small-12 medium-6 large-4 columns right">
-								<button class="expand button" id="submit" type="submit">SEND</button>
-							</div>
+						<div class="small-12 medium-6 large-4 columns radius">
+							<input class="radius" type="text" id="name" placeholder="Your name">
 						</div>
-					</form>
-				</div>
+						<div class="small-12 medium-6 large-4 columns radius">
+							<input class="radius" type="text" id="company" placeholder="Your company">
+						</div>
+					</div>
+					<div class="row">
+						<div class="small-12 columns radius">
+							<textarea class="radius" type="message" id="message" name="message" placeholder="Tell us your story! We'll come back to you asap."></textarea>
+						</div>
+						<div class="small-12 medium-6 large-4 columns right">
+							<button class="expand button" id="submit" type="submit">SEND</button>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
 	<div id="contactUs" class="reveal-modal full" data-reveal>
 		<a class="close-reveal-modal">&#10005;</a>
 	</div>
-	<section id="map" class="red">
+	<section id="map">
 	</section>
 	<section id="sponsors">
 		<div class="row">
@@ -130,53 +131,323 @@
 	</div>
 
 
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/foundation/js/foundation.min.js"></script>
-    <script src="js/app.js"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/foundation/js/foundation.min.js"></script>
+	<script src="js/app.js"></script>
+	<!-- Map JS -->
+	<script type="text/javascript">
+	function initialize() {
+		var mapOptions = {
+			center: { lat: 46.8, lng: 8.4},
+			zoom: 9,
+			zoomControl: true,
+			panControl: false,
+			mapTypeControl: false,
+			streetViewControl: true,
+			rotateControl: false,
+			scrollwheel: false
+		};
 
-    <!-- Form Validation JS -->
-    <script>
-        jQuery(document).ready(function(){
-            $('#contactform').submit(function(){
-                var action = $(this).attr('action');
-                $('#contactform #submit').attr('disabled','disabled').after();
-                $("#message").slideUp(750,function() {
-                $('#message').hide();
-                $.post(action, {
-                    email: $('#email').val(),
-                    firstname: $('#firstname').val(),
-                    lastname: $('#firstname').val(),
-                    company: $('#company').val(),
-                    message: $('#message').val(),
-                },
-                    function(data){
-                        document.getElementById('message').innerHTML = data;
-                        $('#message').slideDown('slow');
-                        $('#contactform img.loader').fadeOut('fast',function(){$(this).remove()});
-                        $('#contactform #submit').removeAttr('disabled','');
-                        if(data.match('success') != null) $('#contactform').slideUp('slow');
+		var map = new google.maps.Map(document.getElementById('map'),
+		mapOptions);
 
-                    }
-                );
-                });
-                return false;
-            });
-        });
-    </script>
-	<script>
-		$(document).ready(function() {
-			$(document).foundation({
-				reveal: {
-					animation: 'fade',
-				}
-			});
-			$(document).on('opened.fndtn.reveal', '[data-reveal]', function () {
-				$('body').addClass('modal-open');
-			});
-			$(document).on('closed.fndtn.reveal', '[data-reveal]', function () {
-				$('body').removeClass('modal-open');
-			});
-		});
+		var styles = [
+			{
+				"featureType": "all",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#d30015"
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.text.fill",
+				"stylers": [
+					{
+						"gamma": 0.01
+					},
+					{
+						"lightness": 20
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.text.stroke",
+				"stylers": [
+					{
+						"saturation": -31
+					},
+					{
+						"lightness": -33
+					},
+					{
+						"weight": 2
+					},
+					{
+						"gamma": 0.8
+					}
+				]
+			},
+			{
+				"featureType": "all",
+				"elementType": "labels.icon",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "administrative.country",
+				"elementType": "all",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "administrative.country",
+				"elementType": "geometry.stroke",
+				"stylers": [
+					{
+						"weight": "5"
+					},
+					{
+						"invert_lightness": true
+					},
+					{
+						"visibility": "on"
+					},
+					{
+						"color": "#ffffff"
+					}
+				]
+			},
+			{
+				"featureType": "administrative.locality",
+				"elementType": "all",
+				"stylers": [
+					{
+						"visibility": "on"
+					}
+				]
+			},
+			{
+				"featureType": "administrative.locality",
+				"elementType": "labels.text",
+				"stylers": [
+					{
+						"color": "#ffffff"
+					},
+					{
+						"visibility": "on"
+					}
+				]
+			},
+			{
+				"featureType": "administrative.locality",
+				"elementType": "labels.text.stroke",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "landscape",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"lightness": 30
+					},
+					{
+						"saturation": 30
+					}
+				]
+			},
+			{
+				"featureType": "landscape.man_made",
+				"elementType": "all",
+				"stylers": [
+					{
+						"color": "#d30015"
+					}
+				]
+			},
+			{
+				"featureType": "landscape.natural.landcover",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#d30015"
+					},
+					{
+						"visibility": "on"
+					}
+				]
+			},
+			{
+				"featureType": "landscape.natural.terrain",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"visibility": "on"
+					},
+					{
+						"color": "#d30015"
+					}
+				]
+			},
+			{
+				"featureType": "poi",
+				"elementType": "all",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "poi",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"saturation": 20
+					}
+				]
+			},
+			{
+				"featureType": "poi.park",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"lightness": 20
+					},
+					{
+						"saturation": -20
+					}
+				]
+			},
+			{
+				"featureType": "road",
+				"elementType": "all",
+				"stylers": [
+					{
+						"hue": "#ff0000"
+					}
+				]
+			},
+			{
+				"featureType": "road",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"lightness": 10
+					},
+					{
+						"saturation": -30
+					}
+				]
+			},
+			{
+				"featureType": "road",
+				"elementType": "geometry.stroke",
+				"stylers": [
+					{
+						"saturation": 25
+					},
+					{
+						"lightness": 25
+					}
+				]
+			},
+			{
+				"featureType": "road",
+				"elementType": "labels.icon",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			},
+			{
+				"featureType": "water",
+				"elementType": "all",
+				"stylers": [
+					{
+						"lightness": -20
+					}
+				]
+			},
+			{
+				"featureType": "water",
+				"elementType": "geometry",
+				"stylers": [
+					{
+						"color": "#ffffff"
+					}
+				]
+			},
+			{
+				"featureType": "water",
+				"elementType": "labels.text",
+				"stylers": [
+					{
+						"visibility": "off"
+					}
+				]
+			}
+		]
+		map.setOptions({styles: styles});
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
+	<!-- Form Validation JS -->
+	<script>
+	jQuery(document).ready(function(){
+		$('#contactform').submit(function(){
+			var action = $(this).attr('action');
+			$('#contactform #submit').attr('disabled','disabled').after();
+			$("#message").slideUp(750,function() {
+				$('#message').hide();
+				$.post(action, {
+					email: $('#email').val(),
+					firstname: $('#firstname').val(),
+					lastname: $('#firstname').val(),
+					company: $('#company').val(),
+					message: $('#message').val(),
+				},
+				function(data){
+					document.getElementById('message').innerHTML = data;
+					$('#message').slideDown('slow');
+					$('#contactform img.loader').fadeOut('fast',function(){$(this).remove()});
+					$('#contactform #submit').removeAttr('disabled','');
+					if(data.match('success') != null) $('#contactform').slideUp('slow');
+				}
+			);
+		});
+		return false;
+	});
+});
+</script>
+<script>
+$(document).ready(function() {
+	$(document).foundation({
+		reveal: {
+			animation: 'fade',
+		}
+	});
+	$(document).on('opened.fndtn.reveal', '[data-reveal]', function () {
+		$('body').addClass('modal-open');
+	});
+	$(document).on('closed.fndtn.reveal', '[data-reveal]', function () {
+		$('body').removeClass('modal-open');
+	});
+});
+</script>
 </body>
 </html>
