@@ -11,13 +11,18 @@ header, section, footer{
       background: $vapor;
    }
    &#map{
+      padding: 0;
       height: 80%;
       width: 100%;
 
       img{
          max-width : none;
-      }   
+      }
    }
+}
+
+*.uppercase{
+   text-transform: uppercase;
 }
 
 div#subFooter{

@@ -15,14 +15,12 @@
 	<link href="favicon.png" rel="shortcut icon" type="image/png">
 	<!-- Compiled CSS -->
 	<link href="css/app.css" rel='stylesheet' type='text/css'>
-	<!-- CartoDB css -->
+	<!-- CartoDB CSS -->
 	<link href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" rel='stylesheet' type='text/css'/>
 	<!-- Roboto Font -->
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
 	<!-- Modernizer JS -->
 	<script src="bower_components/modernizr/modernizr.js" type="text/javascript"></script>
-	<!-- Google Map JS -->
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv6Ru9xwvPpwhpBwRQ0Vh60gus5ni0y5A" type="text/javascript"></script>
 	<!-- CartoDB JS -->
 	<script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.uncompressed.js"></script>
 	<!-- Google Analytics JS -->
@@ -91,7 +89,7 @@
 	<section id="sponsors">
 		<div class="row">
 			<div class="small-12 columns text-center">
-				<h2>Thanks for your support</h2>
+				<h2 class="uppercase">Thanks for your support</h2>
 			</div>
 		</div>
 		<div class="row" data-equalizer>
@@ -106,22 +104,22 @@
 	<section id="joinTheAssociation" class="grey">
 		<div class="row">
 			<div class="small-12 columns text-center">
-				<h2>Join the association</h2>
+				<h2 class="uppercase">Join the association</h2>
 			</div>
 		</div>
 	</section>
 	<footer class="red">
 		<div class="row" data-equalizer>
 			<div class="small-12 medium-4 large-4 columns text-center">
-				<h4 data-equalizer-watch>POWERING THE TECH SCENE</h4>
+				<h4 data-equalizer-watch class="uppercase">Powering the swiss tech scene</h4>
 				<a href="http://www.swisstechassociation.com/" target="_blank"><img src="img/stassociation-logo.png" alt="logo"></a>
 			</div>
 			<div class="small-12 medium-4 large-4 columns text-center">
-				<h4 data-equalizer-watch>SMART PEOPLE TALKING TECH </h4>
+				<h4 data-equalizer-watch class="uppercase">Smart people talking tech</h4>
 				<a href="http://www.swisstechtalks.com/" target="_blank"><img src="img/sttalks-logo.png" alt="logo"></a>
 			</div>
 			<div class="small-12 medium-4 large-4 columns text-center">
-				<h4 data-equalizer-watch>FOUR MONTHS TO TAKE OFF</h4>
+				<h4 data-equalizer-watch class="uppercase">Four month to take off</h4>
 				<a href="http://www.swisstechaccelerator.com/" target="_blank"><img src="img/staccelerator-logo.png" alt="logo"></a>
 			</div>
 		</div>
@@ -140,445 +138,104 @@
 	<script src="js/app.js"></script>
 	<!-- Map JS -->
 	<script type="text/javascript">
-	function initialize() {
-		var mapOptions = {
-			center: { lat: 46.8, lng: 8.4},
-			zoom: 9,
-			zoomControl: true,
-			zoomControlOptions: {
-				style: google.maps.ZoomControlStyle.SMALL
-			},
-			panControl: false,
-			mapTypeControl: false,
-			streetViewControl: true,
-			rotateControl: false,
+	function main() {
+		cartodb.createVis('map', 'http://sebastianhaag.cartodb.com/api/v2/viz/1fec13c4-6297-11e4-afe7-0e853d047bba/viz.json',{
+			gmaps_base_type: 'gray_roadmap',
+			shareable: false,
+			title: false,
+			description: false,
+			search: false,
+			tiles_loader: false,
+			center_lat: 46.8,
+			center_lon: 8.4,
+			zoom: 8,
+			legends: true,
+			https: true,
+			cartodb_logo: true,
+			fullscreen: true,
 			scrollwheel: false
-		};
 
-		var map = new google.maps.Map(document.getElementById('map'),
-		mapOptions);
-
-		var styles = [
-			{
-				"featureType": "administrative",
-				"elementType": "labels",
-				"stylers": [
-					{
-						"visibility": "on"
-					}
-				]
-			},
-			{
-				"featureType": "administrative",
-				"elementType": "labels.text.fill",
-				"stylers": [
-					{
-						"color": "#444444"
-					}
-				]
-			},
-			{
-				"featureType": "administrative.country",
-				"elementType": "all",
-				"stylers": [
-					{
-						"color": "#d30015"
-					}
-				]
-			},
-			{
-				"featureType": "administrative.country",
-				"elementType": "geometry.stroke",
-				"stylers": [
-					{
-						"weight": "4.00"
-					}
-				]
-			},
-			{
-				"featureType": "administrative.country",
-				"elementType": "labels",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "administrative.province",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "administrative.locality",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "on"
-					}
-				]
-			},
-			{
-				"featureType": "administrative.neighborhood",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "administrative.land_parcel",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "landscape",
-				"elementType": "all",
-				"stylers": [
-					{
-						"color": "#f2f2f2"
-					},
-					{
-						"visibility": "on"
-					}
-				]
-			},
-			{
-				"featureType": "landscape",
-				"elementType": "labels",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "landscape.man_made",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "on"
-					},
-					{
-						"color": "#d30015"
-					}
-				]
-			},
-			{
-				"featureType": "landscape.man_made",
-				"elementType": "labels",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "landscape.natural",
-				"elementType": "all",
-				"stylers": [
-					{
-						"hue": "#ff0000"
-					}
-				]
-			},
-			{
-				"featureType": "landscape.natural.landcover",
-				"elementType": "all",
-				"stylers": [
-					{
-						"color": "#ffffff"
-					}
-				]
-			},
-			{
-				"featureType": "landscape.natural.landcover",
-				"elementType": "labels",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "landscape.natural.terrain",
-				"elementType": "all",
-				"stylers": [
-					{
-						"color": "#ffffff"
-					}
-				]
-			},
-			{
-				"featureType": "landscape.natural.terrain",
-				"elementType": "labels",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "poi",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "on"
-					},
-					{
-						"color": "#ffffff"
-					}
-				]
-			},
-			{
-				"featureType": "poi",
-				"elementType": "labels",
-				"stylers": [
-					{
-						"visibility": "on"
-					}
-				]
-			},
-			{
-				"featureType": "poi",
-				"elementType": "labels.icon",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "poi.park",
-				"elementType": "all",
-				"stylers": [
-					{
-						"color": "#ffffff"
-					}
-				]
-			},
-			{
-				"featureType": "road",
-				"elementType": "all",
-				"stylers": [
-					{
-						"saturation": -100
-					},
-					{
-						"lightness": 45
-					}
-				]
-			},
-			{
-				"featureType": "road",
-				"elementType": "labels.icon",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "road.highway",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "simplified"
-					}
-				]
-			},
-			{
-				"featureType": "road.highway",
-				"elementType": "labels.icon",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "road.arterial",
-				"elementType": "labels.icon",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "transit",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "transit.line",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "on"
-					},
-					{
-						"color": "#ff0000"
-					}
-				]
-			},
-			{
-				"featureType": "transit.station",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "on"
-					},
-					{
-						"color": "#d30015"
-					}
-				]
-			},
-			{
-				"featureType": "transit.station.airport",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "on"
-					}
-				]
-			},
-			{
-				"featureType": "transit.station.airport",
-				"elementType": "labels.icon",
-				"stylers": [
-					{
-						"visibility": "on"
-					}
-				]
-			},
-			{
-				"featureType": "transit.station.bus",
-				"elementType": "all",
-				"stylers": [
-					{
-						"visibility": "on"
-					}
-				]
-			},
-			{
-				"featureType": "transit.station.bus",
-				"elementType": "labels.icon",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			},
-			{
-				"featureType": "transit.station.rail",
-				"elementType": "geometry",
-				"stylers": [
-					{
-						"visibility": "on"
-					}
-				]
-			},
-			{
-				"featureType": "transit.station.rail",
-				"elementType": "labels.icon",
-				"stylers": [
-					{
-						"visibility": "on"
-					}
-				]
-			},
-			{
-				"featureType": "water",
-				"elementType": "all",
-				"stylers": [
-					{
-						"color": "#ffffff"
-					},
-					{
-						"visibility": "on"
-					}
-				]
-			},
-			{
-				"featureType": "water",
-				"elementType": "labels.text",
-				"stylers": [
-					{
-						"visibility": "off"
-					}
-				]
-			}
-		]
-		map.setOptions({styles: styles});
-
-		cartodb.createLayer(map, 'http://sebastianhaag.cartodb.com/api/v2/viz/1fec13c4-6297-11e4-afe7-0e853d047bba/viz.json')
-		.addTo(map, 1)
-		.on('done', function(layer) {
-			//do nothing
 		})
-		.on('error', function(err) {
-			alert("some error occurred: " + err);
+		.done(function(vis, layers) {
+			// layer 0 is the base layer, layer 1 is cartodb layer
+			nativeMap = vis.getNativeMap();
+			detectUserLocation();
+		})
+		.error(function(err) {
+			console.log(err);
 		});
-
 	}
-	google.maps.event.addDomListener(window, 'load', initialize);
+	window.onload = main;
+
+	function detectUserLocation(){
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(
+				mapToPosition,
+				alertError
+			);
+		}
+		else {
+			alert("Geolocation is not supported by this browser");
+		}
+
+		function alertError(error) {
+			var errors = {
+				1: 'Please enable location services on your device',
+				2: 'Error 2',
+				3: 'Error 3'
+			};
+			alert("Error: " + errors[error.code]);
+		}
+	}
+
+	function mapToPosition(position) {
+		lon = position.coords.longitude;
+		lat = position.coords.latitude;
+		nativeMap.setView(new L.LatLng(lat,lon), 12);
+	}
 	</script>
 	<!-- Form Validation JS -->
 	<script>
 	jQuery(document).ready(function(){
 		$('#contactform').submit(function(){
 			var action = $(this).attr('action');
-			$('#contactform #submit').attr('disabled','disabled').after();
-			$("#message").slideUp(750,function() {
-				$('#message').hide();
-				$.post(action, {
-					email: $('#email').val(),
-					firstname: $('#firstname').val(),
-					lastname: $('#firstname').val(),
-					company: $('#company').val(),
-					message: $('#message').val(),
-				},
-				function(data){
-					document.getElementById('message').innerHTML = data;
-					$('#message').slideDown('slow');
-					$('#contactform img.loader').fadeOut('fast',function(){$(this).remove()});
-					$('#contactform #submit').removeAttr('disabled','');
-					if(data.match('success') != null) $('#contactform').slideUp('slow');
-				}
-			);
+				$('#contactform #submit').attr('disabled','disabled').after();
+				$("#message").slideUp(750,function() {
+					$('#message').hide();
+					$.post(action, {
+						email: $('#email').val(),
+						firstname: $('#firstname').val(),
+						lastname: $('#firstname').val(),
+						company: $('#company').val(),
+						message: $('#message').val(),
+					},
+					function(data){
+						document.getElementById('message').innerHTML = data;
+						$('#message').slideDown('slow');
+						$('#contactform img.loader').fadeOut('fast',function(){$(this).remove()});
+						$('#contactform #submit').removeAttr('disabled','');
+						if(data.match('success') != null) $('#contactform').slideUp('slow');
+					}
+				);
+			});
+			return false;
 		});
-		return false;
 	});
-});
-</script>
-<script>
-$(document).ready(function() {
-	$(document).foundation({
-		reveal: {
-			animation: 'fade',
-		}
+	</script>
+	<script>
+	$(document).ready(function() {
+		$(document).foundation({
+			reveal: {
+				animation: 'fade',
+			}
+		});
+		$(document).on('opened.fndtn.reveal', '[data-reveal]', function () {
+			$('body').addClass('modal-open');
+		});
+		$(document).on('closed.fndtn.reveal', '[data-reveal]', function () {
+			$('body').removeClass('modal-open');
+		});
 	});
-	$(document).on('opened.fndtn.reveal', '[data-reveal]', function () {
-		$('body').addClass('modal-open');
-	});
-	$(document).on('closed.fndtn.reveal', '[data-reveal]', function () {
-		$('body').removeClass('modal-open');
-	});
-});
-</script>
+	</script>
 </body>
 </html>
