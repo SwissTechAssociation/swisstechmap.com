@@ -1,6 +1,9 @@
 body.modal-open {
     overflow: hidden;
 }
+.modalForm{
+   padding-top: 60px;
+}
 
 .reveal-modal{
 	box-shadow: none;
@@ -10,8 +13,7 @@ body.modal-open {
    -moz-border-radius: none;
    -o-border-radius: none;
    -ms-border-radius: none;
-   background: rgba(255,255,255,0.9);
-
+   background: rgba(255,255,255,0.95);
 	a.close-reveal-modal {
       color: $red;
 		top: 1.3rem;

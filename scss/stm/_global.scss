@@ -1,14 +1,16 @@
-header, section, footer{
+body{
+   overflow-x: hidden;
+}
+
+.full-width {
+  max-width: 100%;
+}
+
+header, section{
    padding: 45px 0;
 
    h1{
       padding: 15px;
-   }
-   &.red{
-      background: $red;
-   }
-   &.grey{
-      background: $vapor;
    }
    &#map{
       padding: 0;
@@ -19,15 +21,38 @@ header, section, footer{
          max-width : none;
       }
    }
+   &#sponsors{
+      a img{
+         padding: 30px 0;
+      }
+   }
+   &#joinTheAssociation{
+      p{
+         padding: 15px 0 5px 0;
+      }
+   }
 }
-
 *.uppercase{
    text-transform: uppercase;
 }
-
+footer > div > div{
+   transition: background 200ms ease-in-out;
+   -webkit-transition: background 200ms ease-in-out;
+   -moz-transition: background 200ms ease-in-out;
+   -o-transition: background 200ms ease-in-out;
+   -ms-transition: background 200ms ease-in-out;
+   h4{
+      color: $white;
+   }
+   a{
+      display: block;
+      img{
+         padding: 45px;
+      }
+   }
+}
 div#subFooter{
    background: $oil;
-   height: 30px;
    p{
       color: $white;
       padding: 5px 0;
@@ -38,18 +63,33 @@ div#subFooter{
 
 
 @media #{$medium-up}{
-   header, section, footer{
-      padding: 60px 0;
+   header, section{
       h1{
          padding: 30px 0 40px 0;
       }
    }
-
+   footer > div > div{
+      a{
+         img{
+            padding: 60px;
+         }
+      }
+   }
 }
 
 
 @media #{$large-up}{
-   header, section, footer{
+   header, section{
       padding: 120px 0;
+   }
+   footer > div > div{
+      &:hover{
+         background-color: scale-color($red, $lightness: -20%);
+      }
+      a{
+         img{
+            padding: 120px;
+         }
+      }
    }
 }

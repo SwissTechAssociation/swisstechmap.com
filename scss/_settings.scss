@@ -94,8 +94,8 @@ $font-family-sans-serif: 'Roboto', "Helvetica Neue", Helvetica, Roboto, Arial, s
 // $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
 // We use these to define default font weights
-// $font-weight-normal: normal;
-// $font-weight-bold: bold;
+$font-weight-normal: 200;
+$font-weight-bold: 500;
 
 $white       : #FFFFFF;
 $ghost       : #FAFAFA;
@@ -216,12 +216,12 @@ $h5-font-size: rem-calc(16);
 $h6-font-size: 1rem;
 
 // We use these to control header size reduction on small screens
-// $h1-font-reduction: rem-calc(10);
-// $h2-font-reduction: rem-calc(10);
-// $h3-font-reduction: rem-calc(5);
-// $h4-font-reduction: rem-calc(5);
-// $h5-font-reduction: 0;
-// $h6-font-reduction: 0;
+$h1-font-reduction: rem-calc(20);
+$h2-font-reduction: rem-calc(16);
+$h3-font-reduction: rem-calc(8);
+$h4-font-reduction: rem-calc(4);
+$h5-font-reduction: 0;
+$h6-font-reduction: 0;
 
 // These control how subheaders are styled.
 // $subheader-line-height: 1.4;
@@ -443,7 +443,7 @@ $h6-font-size: 1rem;
 // $button-font-sml: rem-calc(13);
 // $button-font-med: rem-calc(16);
 // $button-font-lrg: rem-calc(20);
-// $button-font-weight: $font-weight-normal;
+$button-font-weight: $font-weight-bold;
 // $button-font-align: center;
 
 // We use these to control various hover effects.

@@ -1,0 +1,10 @@
+h2{
+   font-weight: 400;
+}
+
+@media #{$large-up}{
+   p{
+      font-size: 1.4rem;
+      font-weight: 300;
+   }
+}
