@@ -838,8 +838,8 @@ $button-font-weight: $font-weight-bold;
 // $tabbar-header-margin: 0;
 
 // Off Canvas Menu Variables
-// $off-canvas-width: rem-calc(250);
-// $off-canvas-bg: $oil;
+$off-canvas-width: 100%;
+$off-canvas-bg: $white;
 
 // Off Canvas Menu List Variables
 // $off-canvas-label-padding: 0.3rem rem-calc(15);
@@ -884,7 +884,7 @@ $button-font-weight: $font-weight-bold;
 // $off-canvas-overlay-background-hover: rgba($white, 0.05);
 
 // Transition Variables
-// $menu-slide: "transform 500ms ease";
+$menu-slide: "transform 1s ease-in-out";
 
 // 19. Orbit
 // - - - - - - - - - - - - - - - - - - - - - - - - -
