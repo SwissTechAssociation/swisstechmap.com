@@ -1,4 +1,4 @@
-.button{
+.button, .button.expand, .button[expand]{
 	display: inline-block;
 	overflow: hidden;
 	padding: 0.8rem 2rem;
@@ -14,6 +14,7 @@
 
    &:hover, &:active, &:focus{
       background: $red;
+		color: $white
    }
 
    /* WHITE TRANSPARENT BUTTON */
@@ -27,7 +28,14 @@
 		}
 	}
 	&.expand.formBtn{
-		right: 15px;
-		position: absolute;
+		margin-left: 15px;
+	}
+}
+
+@media #{$medium-up}{
+	.button, .button.expand, .button[expand]{
+		&.expand.formBtn{
+			margin-right: 15px;
+		}
 	}
 }
