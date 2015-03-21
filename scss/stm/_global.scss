@@ -11,7 +11,7 @@ hr{
    margin: 40px 0;
 }
 
-header, section{
+header, section, footer{
    padding: 45px 0;
 
    h1{
@@ -24,16 +24,21 @@ header, section{
       #onMapLogo a img{
          position: absolute;
          z-index: 999;
-         top: 20px;
-         left: 20px;
-         width: 200px;
+         top: 15px;
+         left: 15px;
+         width: 170px;
          height: auto;
       }
       #onMapMenu{
          position: absolute;
          z-index: 999;
-         right: 20px;
+         right: 15px;
       }
+   }
+
+   a img#header-logo{
+      padding-top: 50px;
+      width: 330px;
    }
 
    &#sponsors{
@@ -42,32 +47,44 @@ header, section{
       }
    }
    &#joinTheAssociation{
+      h2{
+         color: $white;
+      }
       p{
          padding: 15px 0 5px 0;
+         color: $white;
       }
    }
 }
 *.uppercase{
    text-transform: uppercase;
 }
-footer > div > div{
-   transition: background 200ms ease-in-out;
-   -webkit-transition: background 200ms ease-in-out;
-   -moz-transition: background 200ms ease-in-out;
-   -o-transition: background 200ms ease-in-out;
-   -ms-transition: background 200ms ease-in-out;
-   h4{
-      color: $white;
+footer{
+   img#staFooterLogo{
+      width: 200px !important;
+      height: auto;
    }
-   a{
-      display: block;
-      img{
-         padding: 45px;
+   #socialLinks{
+      padding-top: 78px;
+      a{
+         color: $white;
+         transition: all 250ms ease-in-out;
+         &:hover{
+            border-bottom: solid 4px $white;
+            color: $white;
+         }
+         span{
+            font-size: 30px;
+         }
       }
+   }
+   img.footerBadge{
+      width: 75px;
+      height: auto;
+      padding-top: 44px;
    }
 }
 div#subFooter{
-   background: $oil;
    p{
       color: $white;
       padding: 5px 0;
@@ -89,15 +106,14 @@ div#subFooter{
             top: 24px;
             left: 66px;
             width: auto;
-            height: 50px;
+            height: 50px !important;
          }
       }
-   }
-   footer > div > div{
-      a{
-         img{
-            padding: 60px;
-         }
+      a img#header-logo{
+         padding-top: 0;
+      }
+      #onMapMenu{
+         right: 24px !important;
       }
    }
 }
@@ -107,14 +123,7 @@ div#subFooter{
    header, section{
       padding: 120px 0;
    }
-   footer > div > div{
-      &:hover{
-         background-color: scale-color($red, $lightness: -20%);
-      }
-      a{
-         img{
-            padding: 120px;
-         }
-      }
+   footer{
+      padding: 60px 0 30px 0;
    }
 }

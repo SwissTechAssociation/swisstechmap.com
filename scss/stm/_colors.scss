@@ -1,8 +1,12 @@
 $red         : #D30015;
+$darkgrey    : #282D30;
 
 *.red{
    background: $red;
 }
 *.grey{
    background: $vapor;
+}
+*.darkgrey{
+   background: $darkgrey;
 }

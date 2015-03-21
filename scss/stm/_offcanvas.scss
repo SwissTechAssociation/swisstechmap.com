@@ -3,24 +3,32 @@
    height: 100vh;
 }
 
+a.button.right-off-canvas-toggle{
+   top: 15px !important;
+}
+a.button.exit-off-canvas {
+   width: 92px;
+   height: 51px;
+   box-shadow: none !important;
+   -webkit-box-shadow: none !important;
+   -moz-box-shadow: none !important;
+   -o-box-shadow: none !important;
+   -ms-box-shadow: none !important;
+   position: absolute !important;
+   top: 15px !important;
+   left: 15px !important;
+   &:hover, &:active, &:focus{
+      background: $red;
+		color: $white
+   }
+}
 @media #{$medium-up}{
    a.button.right-off-canvas-toggle{
-      top: 24px !important;
+      top: 25px !important;
    }
    a.button.exit-off-canvas {
       width: 200px;
-      height: 51px;
-      box-shadow: none !important;
-      -webkit-box-shadow: none !important;
-      -moz-box-shadow: none !important;
-      -o-box-shadow: none !important;
-      -ms-box-shadow: none !important;
-      position: fixed !important;
       top: 24px !important;
-      left: 20px !important;
-      &:hover, &:active, &:focus{
-         background: $red;
-   		color: $white
-      }
+      left: 24px !important;
    }
 }

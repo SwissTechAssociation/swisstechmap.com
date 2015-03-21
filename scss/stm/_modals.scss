@@ -1,6 +1,3 @@
-body.modal-open {
-    overflow: hidden;
-}
 .modalForm{
    margin-top: 60px;
 }
@@ -14,7 +11,10 @@ body.modal-open {
    -o-border-radius: none;
    -ms-border-radius: none;
    background: rgba(255,255,255,0.95);
-   overflow-y: scroll;
+   &.full.open{
+      position: absolute;
+      z-index: 99999;
+   }
 	a.close-reveal-modal {
       color: $red;
 		top: 1.3rem;
