@@ -3,6 +3,11 @@
 }
 
 .reveal-modal{
+   overflow: scroll;
+   height: 100%;
+   width: 100%;
+   position: fixed;
+   z-index: 999999;
 	box-shadow: none;
    border: none;
    border-radius: none;
@@ -10,11 +15,7 @@
    -moz-border-radius: none;
    -o-border-radius: none;
    -ms-border-radius: none;
-   background: rgba(255,255,255,0.95);
-   &.full.open{
-      position: absolute;
-      z-index: 99999;
-   }
+
 	a.close-reveal-modal {
       color: $red;
 		top: 1.3rem;
@@ -24,4 +25,13 @@
 	p{
 		margin-top: 15px;
 	}
+}
+.reveal-modal-bg{
+   background: none;
+}
+
+@media #{$large-up}{
+   .modalForm{
+      margin-top: 90px;
+   }
 }
