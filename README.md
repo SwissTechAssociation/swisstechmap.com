@@ -1,8 +1,12 @@
-# Foundation libsass template
+# SwissTechMap is a collaborative project
+
+## It's built with cartoDB and a simple foundation template.
+
+### Foundation libsass template
 
 This is a template to start your own project that uses Grunt and libsass!
 
-## Requirements
+### Requirements
 
 You'll need to have the following items installed before continuing.
 
@@ -10,7 +14,7 @@ You'll need to have the following items installed before continuing.
   * [Grunt](http://gruntjs.com/): Run `[sudo] npm install -g grunt-cli`
   * [Bower](http://bower.io): Run `[sudo] npm install -g bower`
 
-## Quickstart
+### Quickstart
 
 ```bash
 git clone git@github.com:zurb/foundation-libsass-template.git
@@ -23,7 +27,8 @@ While you're working on your project, run:
 
 And you're set!
 
-## Directory Structure
+### Directory Structure
 
   * `scss/_settings.scss`: Foundation configuration settings go in here
   * `scss/app.scss`: Application styles go here
+  * `scss/stm.scss`: Custom styles go here
